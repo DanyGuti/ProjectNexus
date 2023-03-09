@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="{{locale}}">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/output.css">
+    <link rel="shortcut icon" href="#">
+    <link
+      rel="icon"
+      href="/LogoTitle.png"
+      type="image/png">
+    <title>Welcome to {{ application.name }}</title>
+    {%- auth0: head -%}
+    <style>
+      {% if application.name=="Auth0 Community" %}
+        #custom-prompt-logo {
+          background-image: url('https://cdn.auth0.com/manhattan/versions/1.3312.0/assets/badge.png');
+        }
+      {% elsif application.name=="Auth0 Dashboard" %}
+
+        #custom-prompt-logo {
+          background-image: url('https://cdn.auth0.com/blog/auth0rta/theme/logos/auth0-logo-black.png');
+        }
+      {% endif %}
+    </style>
+  </head>
+  <body>
+    {%- auth0: widget -%}
+  </body>
+</html>
