@@ -864,16 +864,12 @@ video {
 }
 
 @media (min-width: 1024px) {
-  .lg\:left-16 {
-    left: 4rem;
+  .lg\:left-20 {
+    left: 5rem;
   }
 
   .lg\:left-6 {
     left: 1.5rem;
-  }
-
-  .lg\:left-20 {
-    left: 5rem;
   }
 
   .lg\:ml-2 {
