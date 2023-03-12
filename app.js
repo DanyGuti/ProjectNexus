@@ -55,7 +55,7 @@ app.get('/login', (req, res) =>
         authorizationParams: {
             response_type: 'code id_token',
             redirect_uri: 'http://localhost:3000/callback',
-            scope: 'openid profile email name picture'
+            scope: 'openid profile email name picture middle_name'
         },
     })
 );
