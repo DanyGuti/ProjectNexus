@@ -18,12 +18,17 @@ app.set(cookieParser('name', 'value', {
     sameSite: 'none',
     secure: true
 }));
-// logMod goes to login and logout Auth0
+
+// logMod goes to login Auth0
 const logMod = require("./routes/login");
 // homeMode just displays home.ejs
 const homeModule = require("./routes/home");
+// logout with auth0
+const logOutModule = require("./routes/home");
+
 
 app.use('/', logMod);
+app.use('/logout', logOutModule);
 app.use('/home', homeModule);
 
 // app.use('/', homeModule);

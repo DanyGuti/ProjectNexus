@@ -3,12 +3,13 @@ const { auth, requiresAuth } = require('express-openid-connect');
 
 let router = express.Router();
 
-
-router.get('/', requiresAuth(),(req, res) =>{
-    res.render(__dirname + '/../views/home');
+router.get('/', requiresAuth(), async (req, res) => {
+    try{
+        const userInfo = await req.oidc.fetchUserInfo();
+        res.render(__dirname + '/../views/home', { user: userInfo });
+    } catch(e){
+        res.redirect('/');
+    }
 });
 
-// router.get('/logout', (req, res) =>{
-
-// });
 module.exports = router;

@@ -12,7 +12,6 @@ router.use(auth({
     secret: process.env.SECRET,
     routes: {
         login: false,
-        postLogoutRedirect: '/',
     },
 }));
 
@@ -28,8 +27,12 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/login', async (req, res) => {
-    const userInfo = await req.oidc.fetchUserInfo();
-    res.render(__dirname + '/../views/home', { user: userInfo });
+    try{
+        const userInfo = await req.oidc.fetchUserInfo();
+        res.render(__dirname + '/../views/home', { user: userInfo });
+    }catch(err){
+        requiresAuth();
+    }
 });
 
 router.onExecutePostLogin = async (event, api) => {
@@ -37,14 +40,6 @@ router.onExecutePostLogin = async (event, api) => {
         api.access.deny("Please verify your email before logging in.");
     }
 };
-
-router.get('/logout', (req, res) => {
-    setTimeout(function(){
-        res.oidc.callback({
-            redirectUri: 'http://localhost:3000/'
-        })
-    }, 2000);
-});
 
 router.get('/callback', (req, res) =>
     res.oidc.callback({
