@@ -24,7 +24,7 @@ const logMod = require("./routes/login");
 // homeMode just displays home.ejs
 const homeModule = require("./routes/home");
 // logout with auth0
-const logOutModule = require("./routes/home");
+const logOutModule = require("./routes/logout");
 
 
 app.use('/', logMod);
