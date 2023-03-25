@@ -1,1 +1,7 @@
-/.env
+# App secrets
+*.env
+# Modules
+/node_modules
+.DS_Store
+.vscode
+dist/
